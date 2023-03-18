@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: Phrs_Server
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/carplatform?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password:
+    type: com.alibaba.druid.pool.DruidDataSource
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+  jackson:
+    generator:
+      write_numbers_as_strings: true
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+server:
+  port: 8002
+  tomcat:
+    basedir: /tmp/tomcat
+
+#mybatis-plus:
+#  mapper-locations: classpath*:/com/phrs_server/mapper/xml/*.xml
+
+
+configuration:
+  log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
