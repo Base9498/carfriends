@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 @Data
-@TableName("car")
+@TableName(value = "car")
 public class Car {
     @TableId(value = "id",type = IdType.AUTO)
     private long id;
@@ -24,11 +24,17 @@ public class Car {
     @TableField("carPower")
     private String carPower;
     @TableField("carBrand")
-    private Brand carBrand;
+    private long carBrand;
     @TableField("userID")
     private long userID;
     @TableField("carAvatar")
     private String carAvatar;
     @TableField("carLike")
     private long carLike;
+    @TableField(exist = false)
+    //所属的品牌
+    private Brand brand;
+    @TableField(exist = false)
+    //所属的用户
+    private User user;
 }

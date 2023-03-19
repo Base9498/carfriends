@@ -24,5 +24,9 @@ public class Activity {
     @TableField("activityDescribe")
     private String activityDescribe;
     @TableField("userID")
-    private User userID;
+    private long userID;
+    @TableField("activityState")
+    private String activityState;
+    @TableField(exist = false)
+    private User user;
 }

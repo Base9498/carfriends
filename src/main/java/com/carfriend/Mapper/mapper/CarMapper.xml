@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.carfriend.Mapper.ICarMapper">
+    <resultMap id="publicCarInfos" type="com.carfriend.Domain.Car">
+        <id property="id" column="id"></id>
+        <result property="carName" column="carName"></result>
+        <result property="carLevel" column="carLevel"></result>
+        <result property="carPrice" column="carPrice"></result>
+        <result property="carEngine" column="carEngine"></result>
+        <result property="carBox" column="carBox"></result>
+        <result property="carPower" column="carPower"></result>
+        <result property="carAvatar" column="carAvatar"></result>
+        <association property="brand" column="carBrand" javaType="com.carfriend.Domain.Brand">
+            <result property="brandName" column="brandName"></result>
+        </association>
+    </resultMap>
+
+    <select id="GetCarInfos" resultMap="publicCarInfos">
+        select car.id,carName,carLevel,carPrice,carEngine,carBox,carPower,carAvatar,brandName from car
+        join brand b on b.id=car.carBrand
+    </select>
+
+    <select id="FindCarByUser" resultMap="publicCarInfos" parameterType="string">
+        select car.id,carName,carLevel,carPrice,carEngine,carBox,carPower,carAvatar,brandName from car
+        join brand b on b.id=car.carBrand where userID=#{userID}
+    </select>
+
+    <insert id="BindCar" parameterType="com.carfriend.Domain.Car">
+        insert into car(carName, carLevel, carPrice, carEngine, carBox, carPower, carBrand, userID, carAvatar)
+        values (#{carName},#{carLevel},#{carPrice},#{carEngine},#{carBox},#{carPower},#{carBrand},#{userID},#{carAvatar})
+    </insert>
+
+
+</mapper>
