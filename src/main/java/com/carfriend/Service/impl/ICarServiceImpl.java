@@ -24,31 +24,32 @@ public class ICarServiceImpl extends ServiceImpl<ICarMapper,Car> implements ICar
         return carMapper.GetCarInfos();
     }
 
+
     /***
-     * 用户绑定车辆信息，除管理员外 每个用户至多绑定一台车
-     * @param car 车辆信息
-     * @return 绑定是否成功
+     * 通过品牌获取指定车辆
+     * @param brandName 品牌名
+     * @return  该品牌的车辆列表
      */
     @Override
-    public Boolean BindCarByUser(Car car) {
-        return carMapper.BindCar(car)==1?true:false;
+    public List<Car> FindCarsByBrand(String brandName) {
+        //TODO：多表查询
+        return carMapper.FindCarsByBrand(brandName);
     }
 
     /***
-     * 用户是否已经绑定过一台车辆了
-     * @param userID 用户id
-     * @return true为已绑定过，false即未绑定过
+     * 点赞指定车辆
+     * @param carID 车辆id
+     * @return 点赞结果
      */
     @Override
-    public Boolean UserHadBound(String userID) {
+    public Boolean LikeCar(String carID) {
         QueryWrapper<Car> queryWrapper=new QueryWrapper<>();
-        queryWrapper.eq("userID",userID);
-        return carMapper.selectOne(queryWrapper)!=null?true:false;
-    }
-
-    @Override
-    public Car FindCarByUserID(String userID) {
-        return carMapper.FindCarByUser(userID);
+        queryWrapper.eq("id",carID);
+        Car car = carMapper.selectOne(queryWrapper);
+        long like=car.getCarLike();
+        like+=1;
+        car.setCarLike(like);
+        return carMapper.updateById(car)==1?true:false;
     }
 
 

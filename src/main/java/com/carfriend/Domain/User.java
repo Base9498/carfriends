@@ -23,6 +23,4 @@ public class User {
     private String userAvatar;
     @TableField(value = "permission")
     private int permission;
-    @TableField(exist = false)
-    private String token;
 }

@@ -32,4 +32,9 @@ public class UserServiceTest {
     void TestUserIsExist(){
         System.out.println(userService.userIsExist("19124332590"));
     }
+
+    @Test
+    void TestGetUserInfo(){
+        System.out.println(userService.GetUserInfos("10000001"));
+    }
 }

@@ -3,6 +3,7 @@ package com.carfriend.Mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.carfriend.Domain.Car;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -17,7 +18,11 @@ public interface ICarMapper extends BaseMapper<Car> {
      */
     List<Car> GetCarInfos();
 
-    Integer BindCar(Car car);
+    /***
+     * 获取某个品牌的所有车型
+     * @param brandName 品牌名
+     * @return 该品牌的车辆列表
+     */
+    List<Car> FindCarsByBrand(String brandName);
 
-    Car FindCarByUser(String userID);
 }

@@ -20,15 +20,11 @@
         join brand b on b.id=car.carBrand
     </select>
 
-    <select id="FindCarByUser" resultMap="publicCarInfos" parameterType="string">
-        select car.id,carName,carLevel,carPrice,carEngine,carBox,carPower,carAvatar,brandName from car
-        join brand b on b.id=car.carBrand where userID=#{userID}
-    </select>
 
-    <insert id="BindCar" parameterType="com.carfriend.Domain.Car">
-        insert into car(carName, carLevel, carPrice, carEngine, carBox, carPower, carBrand, userID, carAvatar)
-        values (#{carName},#{carLevel},#{carPrice},#{carEngine},#{carBox},#{carPower},#{carBrand},#{userID},#{carAvatar})
-    </insert>
+    <select id="FindCarsByBrand" resultMap="publicCarInfos" parameterType="string">
+        select car.id,carName,carLevel,carPrice,carEngine,carBox,carPower,carAvatar,b.brandName from car
+        join brand b on b.id=car.carBrand where brandName like #{brandName};
+    </select>
 
 
 </mapper>

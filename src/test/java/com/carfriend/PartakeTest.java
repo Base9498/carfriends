@@ -13,11 +13,16 @@ public class PartakeTest {
 
     @Test
     void TestJoinPartake(){
-        System.out.println(partakeService.JoinPartake("10000001","69400002"));
+//        System.out.println(partakeService.JoinPartake("10000001","69400002"));
     }
 
     @Test
     void TestFindAllPartake(){
         System.out.println(partakeService.FindAllPartake("10000001"));
+    }
+
+    @Test
+    void FindUserPartake(){
+        partakeService.FindAllPartake("10000001").stream().forEach(System.out::println);
     }
 }

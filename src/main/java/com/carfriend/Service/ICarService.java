@@ -9,9 +9,7 @@ public interface ICarService extends IService<Car> {
 
     List<Car> GetCarInfos();
 
-    Boolean BindCarByUser(Car car);
+    List<Car> FindCarsByBrand(String brandName);
 
-    Boolean UserHadBound(String userID);
-
-    Car FindCarByUserID(String userID);
+    Boolean LikeCar(String carID);
 }

@@ -18,16 +18,11 @@ public class IPartakeServiceImpl extends ServiceImpl<IPartakeMapper, Partake> im
     private IPartakeMapper partakeMapper;
     /***
      * 参与活动
-     * @param userID 用户id
-     * @param activityID 活动id
+     * @param partake 活动信息
      * @return 参与是否成功
      */
     @Override
-    public Boolean JoinPartake(String userID, String activityID) {
-        Partake partake=new Partake();
-        partake.setUserID(Long.valueOf(userID));
-        partake.setActivityID(Long.valueOf(activityID));
-        partake.setPartakeTime(new Date());
+    public Boolean JoinPartake(Partake partake) {
         return partakeMapper.insert(partake)==1?true:false;
     }
 

@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IPartakeService extends IService<Partake> {
 
-    Boolean JoinPartake(String userID,String activityID);
+    Boolean JoinPartake(Partake partake);
 
     List<Partake> FindAllPartake(String userID);
 }

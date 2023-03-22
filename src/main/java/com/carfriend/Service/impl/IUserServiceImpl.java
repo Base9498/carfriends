@@ -48,4 +48,16 @@ public class IUserServiceImpl extends ServiceImpl<IUserMapper,User> implements I
         queryWrapper.eq("userAccount",userAccount);
         return userMapper.selectOne(queryWrapper)!=null?true:false;
     }
+
+    /***
+     * 获取用户个人信息
+     * @param userID
+     * @return
+     */
+    @Override
+    public User GetUserInfos(String userID){
+        QueryWrapper<User> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("id",userID);
+        return userMapper.selectOne(queryWrapper);
+    }
 }

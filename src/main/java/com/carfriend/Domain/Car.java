@@ -25,8 +25,6 @@ public class Car {
     private String carPower;
     @TableField("carBrand")
     private long carBrand;
-    @TableField("userID")
-    private long userID;
     @TableField("carAvatar")
     private String carAvatar;
     @TableField("carLike")
@@ -34,7 +32,5 @@ public class Car {
     @TableField(exist = false)
     //所属的品牌
     private Brand brand;
-    @TableField(exist = false)
-    //所属的用户
-    private User user;
+
 }
