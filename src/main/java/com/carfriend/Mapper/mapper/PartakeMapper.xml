@@ -2,23 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.carfriend.Mapper.IPartakeMapper">
     <resultMap id="partake" type="com.carfriend.Domain.Partake">
-        <id property="userID" column="userID"></id>
+        <id property="id" column="id"></id>
+        <result property="userID" column="userID"></result>
         <result property="partakeTime" column="partakeTime"></result>
-        <association property="activity" javaType="com.carfriend.Domain.Activity">
+        <association property="activity" column="activityID" javaType="com.carfriend.Domain.Activity">
             <id property="id" column="id"></id>
             <result property="activityName" column="activityName"></result>
             <result property="activityAddress" column="activityAddress"></result>
             <result property="activityTime" column="activityTime"></result>
-            <result property="activityNumber" column="activityNumber"></result>
             <result property="activityDescribe" column="activityDescribe"></result>
-            <result property="userID" column="userID"></result>
         </association>
     </resultMap>
 
-    <select id="FindPartakeByUser" resultMap="partake">
-        select partake.userID,activityID,partakeTime,activityName,activityAddress,activityTime,activityNumber,
-               activityDescribe,activityState
-        from partake join activity a on partake.activityID = a.id
-        where partake.userID=#{userID}
+
+    <select id="FindPartakeByUser" resultMap="partake" parameterType="string">
+        SELECT p.userID, p.activityID, p.partakeTime, a.id, a.activityName, a.activityAddress,
+               a.activityTime, a.activityDescribe
+        FROM partake p
+                  JOIN activity a ON p.activityID = a.id
+        WHERE p.userID = #{userID}
     </select>
+
+
 </mapper>

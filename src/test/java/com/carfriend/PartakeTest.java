@@ -1,6 +1,7 @@
 package com.carfriend;
 
 import com.carfriend.Domain.Partake;
+import com.carfriend.Mapper.IPartakeMapper;
 import com.carfriend.Service.impl.IPartakeServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class PartakeTest {
     @Autowired
     private IPartakeServiceImpl partakeService;
+    @Autowired
+    private IPartakeMapper partakeMapper;
 
     @Test
     void TestJoinPartake(){
@@ -23,6 +26,7 @@ public class PartakeTest {
 
     @Test
     void FindUserPartake(){
-        partakeService.FindAllPartake("10000001").stream().forEach(System.out::println);
+        System.out.println(partakeService.FindAllPartake("10000001").size());
+//        System.out.println(partakeMapper.FindPartakeByUserone("10000001"));
     }
 }

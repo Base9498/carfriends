@@ -136,7 +136,7 @@ public class ActivityController {
     public Result GetPartakeByUer(@PathVariable("userID") String userID){
         List<Partake> partakes = partakeService.FindAllPartake(userID);
         if(!partakes.isEmpty())
-            return new Result(Code.SUCCESS,partakes,"发生错误");
+            return new Result(Code.SUCCESS,partakes,"获取成功");
         return new Result(Code.ERROR,"无相关信息");
     }
 }

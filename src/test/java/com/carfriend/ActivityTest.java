@@ -61,4 +61,6 @@ public class ActivityTest {
         activity.setActivityState("已结束");
         System.out.println(activityService.EndActivity(activity));
     }
+
+
 }

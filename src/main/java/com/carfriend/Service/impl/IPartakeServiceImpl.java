@@ -33,8 +33,6 @@ public class IPartakeServiceImpl extends ServiceImpl<IPartakeMapper, Partake> im
      */
     @Override
     public List<Partake> FindAllPartake(String userID) {
-        QueryWrapper<Partake> queryWrapper=new QueryWrapper<>();
-        queryWrapper.eq("userID",userID);
-        return partakeMapper.selectList(queryWrapper);
+        return partakeMapper.FindPartakeByUser(userID);
     }
 }

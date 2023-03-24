@@ -23,8 +23,8 @@ server:
     basedir: /tmp/tomcat
 
 mybatis-plus:
-#  configuration:
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath*:/com/carfriend/Mapper/mapper/*.xml
   type-aliases-package: com.carfriend.Domain
 

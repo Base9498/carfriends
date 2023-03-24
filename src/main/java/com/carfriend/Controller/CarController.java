@@ -43,6 +43,11 @@ public class CarController {
         return new Result(Code.ERROR,"没有该品牌的车辆信息");
     }
 
+    /***
+     * 点赞车辆
+     * @param carID 车辆id
+     * @return 点赞成功结果
+     */
     @GetMapping("/likeCar/{carID}")
     public Result LikeCar(@PathVariable("carID") String carID){
         Boolean success = carService.LikeCar(carID);
