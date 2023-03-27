@@ -28,16 +28,7 @@ public class ProjectWebMvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new ProjectInterceptor())
                 .addPathPatterns("/**")//拦截所有请求
-                .excludePathPatterns("/Login/**");//开放登录路径
+                .excludePathPatterns("/login/**");//开放登录路径
     }
 
-    /**
-     * 访问静态资源
-     * @param registry
-     */
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/static/**")
-                .addResourceLocations("classpath:/static/");
-    }
 }

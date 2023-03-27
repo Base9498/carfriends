@@ -5,9 +5,11 @@ import com.carfriend.Domain.User;
 import com.carfriend.Service.IUserService;
 import com.carfriend.Util.Code;
 import com.carfriend.Util.Result;
+import com.carfriend.Util.TokenCreator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /***
@@ -34,8 +36,11 @@ public class LoginController {
             return new Result(Code.ERROR,"用户不存在");
         }
         //TODO 后期添加自动生成token的功能
-        Token token=new Token("123894sd1sa88481s1f8s");
-        return new Result(Code.SUCCESS,token,"登录成功");
+        Token token = TokenCreator.SetNewToken(user);
+        Map<String,Object> result=new HashMap<>();
+        result.put("user",user);
+        result.put("token",token);
+        return new Result(Code.SUCCESS,result,"登录成功");
     }
 
 
