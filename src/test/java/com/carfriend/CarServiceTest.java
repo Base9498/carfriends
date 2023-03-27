@@ -21,7 +21,7 @@ public class CarServiceTest {
 
     @Test
     void TestFindCarsByBrand(){
-        System.out.println(carService.FindCarsByBrand("领克"));
+        System.out.println(carService.FindCarsByBrand("L"));
     }
 
     @Test

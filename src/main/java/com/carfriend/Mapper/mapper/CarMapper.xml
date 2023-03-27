@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.carfriend.Mapper.ICarMapper">
-    <resultMap id="publicCarInfos" type="com.carfriend.Domain.Car">
+    <resultMap id="publicCarInfos" type="car">
         <id property="id" column="id"></id>
         <result property="carName" column="carName"></result>
         <result property="carLevel" column="carLevel"></result>
@@ -23,7 +23,7 @@
 
     <select id="FindCarsByBrand" resultMap="publicCarInfos" parameterType="string">
         select car.id,carName,carLevel,carPrice,carEngine,carBox,carPower,carAvatar,b.brandName from car
-        join brand b on b.id=car.carBrand where brandName like #{brandName};
+        join brand b on b.id=car.carBrand where b.brandName like "%"#{brandName}"%";
     </select>
 
 
